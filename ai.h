@@ -1,3 +1,3 @@
 namespace lucas {
-    Player * generateDerandomTurbo( cmdline::args&& );
+    Player * generateDezero( cmdline::args&& );
 } // namespace lucas
