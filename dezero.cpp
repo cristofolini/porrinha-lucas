@@ -1,4 +1,5 @@
 #include <ostream>
+#include "stdlib.h"
 #include "core/util.h"
 #include "dezero.h"
 #include "porrinha-royer/nullstream.h"
@@ -55,6 +56,9 @@ namespace lucas {
             /* No data information. Let's be pure random. */
             out() << "[dezero]: no info, pure random move.\n";
             my_hand = random(core::chopsticks(my_index));
+            if(rand()%100<5) {
+                my_hand = rand()%core::chopsticks(core::index(this))+1;
+            }
         }
         /*else if( stats == 0 ) {
             /* No stats. Let's try to push the final number
@@ -67,6 +71,9 @@ namespace lucas {
         else {
             out() << "[dezero]: Stats acquired. Pondered move.\n";
             my_hand = core::chopsticks(my_index) - (int)stats;
+            if(rand()%100<5 || my_hand < 0) {
+                my_hand = rand()%core::chopsticks(core::index(this))+1;
+            }
         }
 
         return my_hand;
